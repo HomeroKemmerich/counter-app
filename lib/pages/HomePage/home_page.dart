@@ -51,6 +51,13 @@ class _HomePageState extends State<HomePage> {
       ),
       backgroundColor: const Color(0xFFF7ECEA),
       body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/background_app.jpg'),
+            fit: BoxFit.cover,
+            opacity: 0.3
+          )
+        ),
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
