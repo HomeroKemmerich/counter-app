@@ -9,30 +9,31 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   int MAX_PEOPLE = 20;
 
   int counter = 0;
 
   bool get isEmpty => counter == 0;
+
   bool get isFull => counter == MAX_PEOPLE;
 
   int get availableSpots => MAX_PEOPLE - counter;
 
-  void increment(){
+  void increment() {
     setState(() {
       counter++;
     });
   }
 
-  void decrement(){
+  void decrement() {
     setState(() {
-      if(counter == 0)
-        return null;
-      else
-        counter--;
+      counter--;
     });
   }
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  TextEditingController inputController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +53,10 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: const Color(0xFFF7ECEA),
       body: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/background_app.jpg'),
-            fit: BoxFit.cover,
-            opacity: 0.3
-          )
-        ),
+            image: DecorationImage(
+                image: AssetImage('assets/images/background_app.jpg'),
+                fit: BoxFit.cover,
+                opacity: 0.3)),
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -74,8 +73,7 @@ class _HomePageState extends State<HomePage> {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
-            Text(
-                '$counter',
+            Text('$counter',
                 style: const TextStyle(
                   color: Colors.brown,
                   fontSize: 100,
